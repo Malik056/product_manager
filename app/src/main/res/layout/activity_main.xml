@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/startBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="20dp"
+        android:enabled="false"
+        android:text="@string/start"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/green"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@id/c1Btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/c1Btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:enabled="false"
+        android:text="C1"
+        android:textColor="@color/black"
+        app:autoSizeMaxTextSize="32sp"
+        app:autoSizeTextType="uniform"
+        app:backgroundTint="@color/yellow"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@id/inBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/c2Btn"
+        app:layout_constraintTop_toBottomOf="@id/startBtn"
+        app:layout_constraintVertical_weight="1.5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/c2Btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="5dp"
+        android:enabled="false"
+        android:text="C2"
+        android:textColor="@color/black"
+        app:autoSizeMaxTextSize="32sp"
+        app:autoSizeTextType="uniform"
+        app:backgroundTint="@color/red"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/c1Btn"
+        app:layout_constraintLeft_toRightOf="@id/c1Btn"
+        app:layout_constraintRight_toLeftOf="@id/c3Btn"
+        app:layout_constraintTop_toTopOf="@id/c1Btn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/c3Btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
+        android:enabled="false"
+        android:text="C3"
+        android:textColor="@color/black"
+        app:autoSizeMaxTextSize="32sp"
+        app:autoSizeTextType="uniform"
+        app:backgroundTint="@color/blue"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/c1Btn"
+        app:layout_constraintLeft_toRightOf="@id/c2Btn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/c1Btn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/inBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="20dp"
+        android:enabled="false"
+        android:text="In"
+        android:textColor="@color/black"
+        app:autoSizeMaxTextSize="32sp"
+        app:autoSizeTextType="uniform"
+        app:backgroundTint="@color/grey"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@id/newFileBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/outBtn"
+        app:layout_constraintTop_toBottomOf="@id/c1Btn"
+        app:layout_constraintVertical_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/outBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="5dp"
+        android:enabled="false"
+        android:text="Out"
+        android:textColor="@color/black"
+        app:autoSizeMaxTextSize="32sp"
+        app:autoSizeTextType="uniform"
+        app:backgroundTint="@color/magenta"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/inBtn"
+        app:layout_constraintLeft_toRightOf="@id/inBtn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/inBtn" />
+
+    <!--    <View-->
+    <!--        android:id="@+id/gap2"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:text="Exit"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/newFileBtn"-->
+    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--        app:layout_constraintRight_toRightOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/inBtn"-->
+    <!--        app:layout_constraintVertical_weight="1" />-->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/newFileBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="New File"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/grey"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@id/marginBottom"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/exitBtn"
+        app:layout_constraintTop_toBottomOf="@id/inBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/exitBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Exit"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/grey"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/newFileBtn"
+        app:layout_constraintLeft_toRightOf="@id/newFileBtn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/newFileBtn" />
+
+    <View
+        android:id="@+id/marginBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newFileBtn"
+        app:layout_constraintVertical_weight="0.4" />
+</androidx.constraintlayout.widget.ConstraintLayout>
