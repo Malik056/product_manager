@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     MaterialButton c3;
     MaterialButton in;
     MaterialButton out;
+    MaterialButton comment;
     MaterialButton newFile;
     MaterialButton exit;
     boolean firstEntry = true;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         out = findViewById(R.id.outBtn);
         newFile = findViewById(R.id.newFileBtn);
         exit = findViewById(R.id.exitBtn);
+        comment = findViewById(R.id.comment);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -128,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                             c3.setEnabled(true);
                             in.setEnabled(true);
                             out.setEnabled(true);
+                            comment.setEnabled(true);
                             dialog.dismiss();
                         } else {
                             input.setError("Error Occurred");
@@ -224,7 +227,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
-
         out.setOnClickListener(view -> {
             if (!firstEntry) {
                 try {
@@ -247,6 +249,51 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        comment.setOnClickListener(view -> {
+            DateTime now = DateTime.now(DateTimeZone.UTC);
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy hh:mm:ss aa").withZone(DateTimeZone.getDefault());
+            String date = formatter.print(now);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.PreferenceDialogLight);
+            builder.setTitle("Comment");
+            // Set up the input
+            final EditText input = new EditText(getApplicationContext());
+            input.setTextColor(getResources().getColor(R.color.black));
+            setCursorColor(input, getResources().getColor(R.color.black));
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            builder.setView(input);
+
+// Set up the buttons
+            builder.setPositiveButton("OK", null);
+            builder.setNegativeButton("Cancel", (view23, dialog) -> {
+            });
+            AlertDialog dialog = builder.create();
+            dialog.setOnShowListener(dialogInterface -> {
+                Button button = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                button.setTextColor(getResources().getColor(R.color.black));
+                button.setOnClickListener(view2 -> {
+                    String m_Text = input.getText().toString();
+                    if (m_Text.isEmpty()) {
+                        input.setError("Please enter a comment");
+                    } else {
+                        try {
+                            if (firstEntry) {
+                                firstEntry = false;
+                            } else {
+                                fo.write(", ".getBytes());
+                            }
+                            fo.write((m_Text + " " + date).getBytes());
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
+
+            });
+            dialog.show();
+        });
+
         exit.setOnClickListener(view -> {
             try {
                 fo.close();
@@ -260,7 +307,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         if (requestCode == WritePermissionCode) {
             if (grantResults[0] == PERMISSION_GRANTED) {
                 init();
