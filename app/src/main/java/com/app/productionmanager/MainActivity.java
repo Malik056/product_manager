@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        newFile.setEnabled(false);
         newFile.setOnClickListener(view1 -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.PreferenceDialogLight);
             builder.setTitle("Enter file name");
@@ -272,6 +271,8 @@ public class MainActivity extends AppCompatActivity {
             dialog.setOnShowListener(dialogInterface -> {
                 Button button = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
                 button.setTextColor(getResources().getColor(R.color.black));
+                Button cancel = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                cancel.setTextColor(getResources().getColor(R.color.black));
                 button.setOnClickListener(view2 -> {
                     String m_Text = input.getText().toString();
                     if (m_Text.isEmpty()) {
@@ -287,6 +288,7 @@ public class MainActivity extends AppCompatActivity {
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
+                        dialog.dismiss();
                     }
                 });
 
